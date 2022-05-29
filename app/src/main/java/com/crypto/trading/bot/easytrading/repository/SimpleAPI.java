@@ -24,14 +24,16 @@ public interface SimpleAPI {
     @GET("api/v3/ticker/24hr")
     Call<CoinPriceChange> getLastdayPrice(@Query("symbol") String symbol);
 
-    @GET("api/v3/klines?symbol=BTCUSDT&interval=1h")
-    Call<List<Candle>> get24HrCandles();
-
-/*
+   /* @GET("api/v3/klines?symbol=BTCUSDT&interval=1h")
+    Call<List<Double[]>> get24HrCandles();
+*/
  @GET("api/v3/klines")
-    Call<List<Candle>> get24HrCandles(@Query("symbol") String symbol, @Query("startTime") long startTime
+    Call<List<Double[]>> get24HrCandles(@Query("symbol") String symbol, @Query("startTime") long startTime
             , @Query("endTime") long endTime, @Query("interval") String interval);
 
-*/
+ /*@GET("api/v3/klines")
+    Call<List<Double[]>> get24HrCandles(@Query("symbol") String symbol, @Query("startTime") long startTime
+            , @Query("endTime") long endTime, @Query("interval") String interval);*/
+
 
 }

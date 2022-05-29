@@ -21,11 +21,11 @@ import retrofit2.Response;
 
 public class CoinDetailsViewModel extends ViewModel {
     private final MutableLiveData<CoinPriceChange> coinDetails;
-    private final MutableLiveData<List<Candle>> candleList;
+    private final MutableLiveData<List<Double[]>> candleList;
 
     public CoinDetailsViewModel() {
         this.coinDetails = new MutableLiveData<CoinPriceChange>();
-        this.candleList = new MutableLiveData<List<Candle>>();
+        this.candleList = new MutableLiveData<List<Double[]>>();
     }
 
     public void callPriceTiker(Context ctx, Coin coin) {
@@ -65,12 +65,12 @@ public class CoinDetailsViewModel extends ViewModel {
     public void call24Candles(Context ctx, CoinPriceChange coin) {
         SimpleAPI apiService = SimpleRetroInstance.getRetrofitClient().create(SimpleAPI.class);
         Interval[] interval = Interval.values();
-        Call<List<Candle>> call = apiService.get24HrCandles();
-        /*Call<List<Candle>> call = apiService.get24HrCandles(coin.getSymbol(), coin.getOpenTime()
-                , coin.getCloseTime(), "1h");*/
-        call.enqueue(new Callback<List<Candle>>() {
+       // Call<List<Double[]>> call = apiService.get24HrCandles();
+        Call<List<Double[]>> call = apiService.get24HrCandles(coin.getSymbol(), coin.getOpenTime()
+                , coin.getCloseTime(), "1h");
+        call.enqueue(new Callback<List<Double[]>>() {
             @Override
-            public void onResponse(Call<List<Candle>> call, Response<List<Candle>> response) {
+            public void onResponse(Call<List<Double[]>> call, Response<List<Double[]>> response) {
                 if (response.code() == 200) {
                     candleList.postValue(response.body());
 
@@ -84,20 +84,16 @@ public class CoinDetailsViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<List<Candle>> call, Throwable t) {
+            public void onFailure(Call<List<Double[]>> call, Throwable t) {
                 Log.e("APIFaliure-candles", "GetCandles24Hr" + t.getMessage());
             }
         });
 
     }
 
-    public MutableLiveData<List<Candle>> get24Candles() {
+    public MutableLiveData<List<Double[]>> get24Candles() {
         return candleList;
     }
 
-    public enum INTERVAL {
-        H, D, M
 
-
-    }
 }

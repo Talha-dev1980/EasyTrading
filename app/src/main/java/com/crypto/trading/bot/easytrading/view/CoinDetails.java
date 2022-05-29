@@ -38,6 +38,8 @@ public class CoinDetails extends AppCompatActivity {
     ActivityCoinDetailsBinding binding;
     CoinDetailsViewModel viewModel;
     Context context;
+    List<Candle> candlesParse;
+    List<Double[]> candlesDouble;
     CoinPriceChange coinPriceChange;
 
     @Override
@@ -53,7 +55,8 @@ public class CoinDetails extends AppCompatActivity {
         Intent intent = getIntent();
         String symbol = intent.getStringExtra("symbol");
         String price = intent.getStringExtra("price");
-
+        candlesParse = new ArrayList<>();
+        candlesDouble = new ArrayList<>();
         binding.tvCoinPair.setText(symbol);
         Coin coin = new Coin(symbol, price);
         viewModel = new ViewModelProvider(this).get(CoinDetailsViewModel.class);
@@ -77,20 +80,25 @@ public class CoinDetails extends AppCompatActivity {
 
     private void loadChart(CoinPriceChange coin) {
         viewModel.call24Candles(context, coin);
-        viewModel.get24Candles().observe((LifecycleOwner) context, new Observer<List<Candle>>() {
+        viewModel.get24Candles().observe((LifecycleOwner) context, new Observer<List<Double[]>>() {
             @Override
-            public void onChanged(List<Candle> candles) {
-                if (candles == null) {
+            public void onChanged(List<Double[]> candles) {
+                if (candles.size() < 1) {
                     // Toast.makeText( context, "failed", Toast.LENGTH_SHORT ).show();
-                    Log.d("candle", "Failed");
+                    Log.d("Candles", "Failed");
                 } else {
-                    Log.d("candle", "Successfully got tikers " + candles.size());
+                    candlesDouble = candles;
+                    Log.d("Candles", "Successfully got candles " + candlesDouble.size());
+                    for (Double[] doubles : candlesDouble) {
+                        candlesParse.add(new Candle(doubles));
+                    }
 
+                    Log.d("Candles", candlesDouble.size() + " " + candles.size() + "");
+                    getData(candlesParse);
 
                 }
             }
         });
-
     }
 
     private void setValues(CoinPriceChange coins) {
@@ -116,7 +124,7 @@ public class CoinDetails extends AppCompatActivity {
             binding.tvMarketBehave.setText(formatter.format(Math.abs(percentage)) + "");
 
         }
-        setChart();
+        // setChart();
 
     }
 
@@ -144,7 +152,6 @@ public class CoinDetails extends AppCompatActivity {
 
         Legend l = binding.detailsChart.getLegend();
         l.setEnabled(false);
-        getData();
         CandleDataSet set1 = new CandleDataSet(yValsCandleStick, "DataSet 1");
         set1.setColor(Color.rgb(80, 80, 80));
         set1.setShadowColor(getResources().getColor(com.google.android.material.R.color.design_default_color_primary));
@@ -166,10 +173,15 @@ public class CoinDetails extends AppCompatActivity {
         binding.detailsChart.invalidate();
     }
 
-    private void getData() {
+    private void getData(List<Candle> candleList) {
         yValsCandleStick = new ArrayList<CandleEntry>();
-        yValsCandleStick.add(new CandleEntry(0, 225.0f, 219.84f, 224.94f, 221.07f));
-        yValsCandleStick.add(new CandleEntry(1, 228.35f, 222.57f, 223.52f, 226.41f));
+        int iterator=1;
+        for (Candle candle : candleList) {
+            yValsCandleStick.add(new CandleEntry(iterator, Float.parseFloat(candle.getHigh() + ""),
+                    Float.parseFloat(candle.getLow() + ""), Float.parseFloat(candle.getOpen() + ""), Float.parseFloat(candle.getClose() + "")));
+        iterator++;
+        }
+        setChart();/*yValsCandleStick.add(new CandleEntry(1, 228.35f, 222.57f, 223.52f, 226.41f));
         yValsCandleStick.add(new CandleEntry(2, 226.84f, 222.52f, 225.75f, 223.84f));
         yValsCandleStick.add(new CandleEntry(3, 222.95f, 217.27f, 222.15f, 217.88f));
         yValsCandleStick.add(new CandleEntry(4, 225.0f, 219.84f, 224.94f, 221.07f));
@@ -180,5 +192,6 @@ public class CoinDetails extends AppCompatActivity {
         yValsCandleStick.add(new CandleEntry(9, 228.35f, 222.57f, 223.52f, 226.41f));
         yValsCandleStick.add(new CandleEntry(10, 226.84f, 222.52f, 225.75f, 223.84f));
         yValsCandleStick.add(new CandleEntry(11, 222.95f, 217.27f, 222.15f, 217.88f));
+*/
     }
 }

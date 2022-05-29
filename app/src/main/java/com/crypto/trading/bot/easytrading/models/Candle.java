@@ -4,124 +4,138 @@ import java.math.BigDecimal;
 
 public class Candle {
 
-    private Long openTime;
+    private Double openTime;
 
-    private BigDecimal open;
+    private Double open;
 
-    private BigDecimal high;
+    private Double high;
 
-    private BigDecimal low;
+    private Double low;
 
-    private BigDecimal close;
+    private Double close;
 
-    private BigDecimal volume;
+    private Double volume;
 
-    private Long closeTime;
+    private Double closeTime;
 
-    private BigDecimal quoteAssetVolume;
+    private Double quoteAssetVolume;
 
-    private Integer numTrades;
+    private Double numTrades;
 
-    private BigDecimal takerBuyBaseAssetVolume;
+    private Double takerBuyBaseAssetVolume;
 
-    private BigDecimal takerBuyQuoteAssetVolume;
+    private Double takerBuyQuoteAssetVolume;
 
-    private BigDecimal ignore;
+    private Double ignore;
 
-    
-    public Long getOpenTime() {
+    public Candle(Double[] candleAttributes) {
+        this.openTime = candleAttributes[0];
+        this.open = candleAttributes[1];
+        this.high = candleAttributes[2];
+        this.low = candleAttributes[3];
+        this.close = candleAttributes[4];
+        this.volume = candleAttributes[5];
+        this.closeTime = candleAttributes[6];
+        this.quoteAssetVolume = candleAttributes[7];
+        this.numTrades = candleAttributes[8];
+        this.takerBuyBaseAssetVolume = candleAttributes[9];
+        this.takerBuyQuoteAssetVolume = candleAttributes[10];
+        this.ignore = candleAttributes[11];
+    }
+
+    public Double getOpenTime() {
         return openTime;
     }
 
-    public void setOpenTime(Long openTime) {
+    public void setOpenTime(Double openTime) {
         this.openTime = openTime;
     }
 
-    public BigDecimal getOpen() {
+    public Double getOpen() {
         return open;
     }
 
-    public void setOpen(BigDecimal open) {
+    public void setOpen(Double open) {
         this.open = open;
     }
 
-    public BigDecimal getHigh() {
+    public Double getHigh() {
         return high;
     }
 
-    public void setHigh(BigDecimal high) {
+    public void setHigh(Double high) {
         this.high = high;
     }
 
-    public BigDecimal getLow() {
+    public Double getLow() {
         return low;
     }
 
-    public void setLow(BigDecimal low) {
+    public void setLow(Double low) {
         this.low = low;
     }
 
-    public BigDecimal getClose() {
+    public Double getClose() {
         return close;
     }
 
-    public void setClose(BigDecimal close) {
+    public void setClose(Double close) {
         this.close = close;
     }
 
-    public BigDecimal getVolume() {
+    public Double getVolume() {
         return volume;
     }
 
-    public void setVolume(BigDecimal volume) {
+    public void setVolume(Double volume) {
         this.volume = volume;
     }
 
-    public Long getCloseTime() {
+    public Double getCloseTime() {
         return closeTime;
     }
 
-    public void setCloseTime(Long closeTime) {
+    public void setCloseTime(Double closeTime) {
         this.closeTime = closeTime;
     }
 
-    public BigDecimal getQuoteAssetVolume() {
+    public Double getQuoteAssetVolume() {
         return quoteAssetVolume;
     }
 
-    public void setQuoteAssetVolume(BigDecimal quoteAssetVolume) {
+    public void setQuoteAssetVolume(Double quoteAssetVolume) {
         this.quoteAssetVolume = quoteAssetVolume;
     }
 
-    public Integer getNumTrades() {
+    public Double getNumTrades() {
         return numTrades;
     }
 
-    public void setNumTrades(Integer numTrades) {
+    public void setNumTrades(Double numTrades) {
         this.numTrades = numTrades;
     }
 
-    public BigDecimal getTakerBuyBaseAssetVolume() {
+    public Double getTakerBuyBaseAssetVolume() {
         return takerBuyBaseAssetVolume;
     }
 
-    public void setTakerBuyBaseAssetVolume(BigDecimal takerBuyBaseAssetVolume) {
+    public void setTakerBuyBaseAssetVolume(Double takerBuyBaseAssetVolume) {
         this.takerBuyBaseAssetVolume = takerBuyBaseAssetVolume;
     }
 
-    public BigDecimal getTakerBuyQuoteAssetVolume() {
+    public Double getTakerBuyQuoteAssetVolume() {
         return takerBuyQuoteAssetVolume;
     }
 
-    public void setTakerBuyQuoteAssetVolume(BigDecimal takerBuyQuoteAssetVolume) {
+    public void setTakerBuyQuoteAssetVolume(Double takerBuyQuoteAssetVolume) {
         this.takerBuyQuoteAssetVolume = takerBuyQuoteAssetVolume;
     }
 
-    public BigDecimal getIgnore() {
+    public Double getIgnore() {
         return ignore;
     }
 
-    public void setIgnore(BigDecimal ignore) {
+    public void setIgnore(Double ignore) {
         this.ignore = ignore;
     }
 }
