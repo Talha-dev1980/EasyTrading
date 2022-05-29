@@ -6,14 +6,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,21 +19,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.crypto.trading.bot.easytrading.TickerAdapter;
 import com.crypto.trading.bot.easytrading.databinding.FragmentDashboardBinding;
 import com.crypto.trading.bot.easytrading.models.Coin;
-import com.crypto.trading.bot.easytrading.models.CoinPriceChange;
 import com.crypto.trading.bot.easytrading.viewModels.DashboardViewModel;
 
 import java.util.List;
 
 public class DashboardFragment extends Fragment {
 
-    private FragmentDashboardBinding binding;
     DashboardViewModel viewModel;
     Context context;
     TickerAdapter tickerAdapter;
+    private FragmentDashboardBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentDashboardBinding.inflate( inflater, container, false );
+        binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         return root;
@@ -49,18 +46,15 @@ public class DashboardFragment extends Fragment {
 
     public void init() {
         context = getActivity();
-        viewModel = ViewModelProviders.of( this ).get( DashboardViewModel.class );
-        viewModel.callForCoinTiker( context );
-        viewModel.getCoinsList().observe( (LifecycleOwner) context, new Observer<List<Coin>>() {
+        viewModel = ViewModelProviders.of(this).get(DashboardViewModel.class);
+        viewModel.callForCoinTiker(context);
+        viewModel.getCoinsList().observe((LifecycleOwner) context, new Observer<List<Coin>>() {
             @Override
             public void onChanged(List<Coin> coins) {
                 if (coins == null) {
-                    Toast.makeText( context, "failed", Toast.LENGTH_SHORT ).show();
-                    Log.d( "coins", "Failed" );
+                    Log.d("coins", "Failed");
                 } else {
-                    Toast.makeText( context, "Successfully got tikers " + coins.size(), Toast.LENGTH_SHORT ).show();
-//todo call adapter to set tickers
-                    Log.d( "coins", "Successfully got tikers " + coins.size() );
+                    Log.d("coins", "Successfully got tikers " + coins.size());
                     tickerAdapter = new TickerAdapter(context, coins);
 
                     RecyclerView.LayoutManager layoutManager =
@@ -70,7 +64,7 @@ public class DashboardFragment extends Fragment {
                     binding.listTickers.setAdapter(tickerAdapter);
                 }
             }
-        } );/*
+        });/*
         viewModel.call24HrChange( context );
         viewModel.getCoinsListLast24hr().observe( (LifecycleOwner) context, new Observer<List<CoinPriceChange>>() {
             @Override

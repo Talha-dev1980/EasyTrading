@@ -14,4 +14,8 @@
     <string name="marketDown">% Down</string>
     <string name="timeFrame">Time Duration</string>
     <string name="priceChange">Price Change</string>
+    <string name="d">1D</string>
+    <string name="h">1H</string>
+    <string name="w">1W</string>
+    <string name="m">1M</string>
 </resources>
