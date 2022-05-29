@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="20dp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/tvCoinPair"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/coinPair"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvCoinPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_alignParentRight="true"
+            android:fontFamily="@font/poppins"
+            android:text="@string/dummyPrice"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvMarketBehave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCoinPair"
+            android:layout_alignLeft="@+id/tvCoinPair"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/marketUp"
+            android:textColor="@color/green"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCoinPair"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tvMarketBehave"
+            android:fontFamily="@font/poppins"
+            android:text="@string/last"
+            android:id="@+id/tvDurBehave"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
+</RelativeLayout>

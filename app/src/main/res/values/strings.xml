@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">EasyTrading</string>
+    <string name="title_activity_currencies_data">CurrenciesData</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="coinPair">ETH/BTC</string>
+    <string name="dummyPrice">42000</string>
+    <string name="marketUp">% UP</string>
+    <string name="last">Last</string>
+    <string name="title_activity_currency_info">CurrencyInfo</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="marketDown">% Down</string>
+    <string name="timeFrame">Time Duration</string>
+    <string name="priceChange">Price Change</string>
+</resources>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".view.CoinDetails">
+
+
+    <RelativeLayout
+        android:id="@+id/lytBasicDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/tvCoinPair"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/coinPair"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvCoinPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/dummyPrice"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvPriceChangePercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCoinPrice"
+            android:layout_alignParentLeft="true"
+            android:fontFamily="@font/poppins"
+            android:text="@string/priceChange"
+            android:textColor="@color/green"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvMarketBehave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCoinPrice"
+            android:layout_alignParentRight="true"
+            android:fontFamily="@font/poppins"
+            android:text="@string/marketUp"
+            android:textColor="@color/green"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvPriceChangePercentage"
+            android:layout_alignParentLeft="true"
+            android:fontFamily="@font/poppins"
+            android:text="@string/timeFrame"
+            android:textColor="@color/green"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvDurBehave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvMarketBehave"
+            android:layout_alignParentRight="true"
+            android:fontFamily="@font/poppins"
+            android:text="@string/last"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <com.github.mikephil.charting.charts.CandleStickChart
+        android:id="@+id/detailsChart"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@+id/lytBasicDetails" />
+</RelativeLayout>
